@@ -8,24 +8,29 @@ app = Flask(__name__)
 @app.route('/query', methods=['POST'])
 def process_query():
     data = request.get_json()
+    
+    # req: error-checking
+    if 'query' not in data:
+        return jsonify({'error': 'Query is missing'}), 400
+
     query = data.get('query')
 
-    # Validate query
-    if not query:
-        return jsonify({'error': 'Invalid query format'}), 400
+    if not isinstance(query, str):
+        return jsonify({'error': 'Query must be a string'}), 400
 
-    # Load the inverted index
+    if not query.strip():
+        return jsonify({'error': 'Query cannot be empty'}), 400
+
     with open('inverted_index_titles.pkl', 'rb') as file:
         inverted_index = pickle.load(file)
 
-    # Perform search
     results = search(query, inverted_index)
 
-    # Return top-K ranked results
-    k = 10  # Adjust as needed
+    #req: top-k (5) results
+    k = 5
     top_results = results[:k]
 
-    return jsonify({'top10results': top_results})
+    return jsonify({'results': top_results})
 
 def search(query, inverted_index):
     vectorizer = TfidfVectorizer()
