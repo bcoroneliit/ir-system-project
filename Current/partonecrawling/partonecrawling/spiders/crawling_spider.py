@@ -5,9 +5,12 @@ import requests
 
 class CrawlingSpider(CrawlSpider):
 
+    # req initialize using seed URL
     name = "mycrawler"
     allowed_domains = ["en.wikipedia.org"]
     start_urls = ["https://en.wikipedia.org/wiki/Illinois_Institute_of_Technology"]
+
+    # req max pages and max depth
     max_pages = 100
     max_depth = 100
 
@@ -21,7 +24,7 @@ class CrawlingSpider(CrawlSpider):
     rules = (
         Rule(LinkExtractor(allow="wiki/"), callback='parse_page', follow=True),
     )
-    
+
     # scraping titles of the wiki pages
     def parse_page(self, response):
         title = self.extract_title(response)

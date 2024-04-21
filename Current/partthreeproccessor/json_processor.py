@@ -11,7 +11,7 @@ def process_query():
     
     # req: error-checking
     if 'query' not in data:
-        return jsonify({'error': 'Query is missing'}), 400
+        return jsonify({'error': 'Query not in data'}), 400
 
     query = data.get('query')
 
@@ -19,7 +19,7 @@ def process_query():
         return jsonify({'error': 'Query must be a string'}), 400
 
     if not query.strip():
-        return jsonify({'error': 'Query cannot be empty'}), 400
+        return jsonify({'error': 'Query can not be empty'}), 400
 
     with open('inverted_index_titles.pkl', 'rb') as file:
         inverted_index = pickle.load(file)

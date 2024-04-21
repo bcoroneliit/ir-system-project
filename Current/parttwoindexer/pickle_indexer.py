@@ -14,21 +14,21 @@ output_file_path = 'clean_titles.txt'
 with open(input_file_path, 'r', encoding='utf-8') as file:
     titles = file.readlines()
 
-# tf-idf vector
+# req tf-idf score
 vectorizer = TfidfVectorizer()
 tfidf_matrix = vectorizer.fit_transform(titles)
 
-# creating inverted index
+# req inverted index
 terms = vectorizer.get_feature_names_out()
 inverted_index = {}
 for i, term in enumerate(terms):
     inverted_index[term] = [(j, tfidf_matrix[j, i]) for j in range(tfidf_matrix.shape[0]) if tfidf_matrix[j, i] > 0]
 
-# inverted index saved to pickle file
+# req inverted index in pickle file
 with open('inverted_index_titles.pkl', 'wb') as file:  
     pickle.dump(inverted_index, file)
 
-# cosine similairty bw query and doc
+# req cosine similairty
 def search(query):
     query_vector = vectorizer.transform([query])
     cosine_similarities = cosine_similarity(query_vector, tfidf_matrix)
