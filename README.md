@@ -23,7 +23,10 @@ The test cases in the processor are simple if statements checking if the query i
 ## Source Code
 
 ## Bibliography 
-
+GeeksforGeeks. “Web Scraping from Wikipedia Using Python - A Complete Guide.” GeeksforGeeks, January 9, 2023.<br>  https://www.geeksforgeeks.org/web-scraping-from-wikipedia-using-python-a-complete-guide/. <br>
+Herbert, Anthony. “How to Process Incoming Request Data in Flask.” DigitalOcean, January 26, 2021.<br>  https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask. <br>
+NeuralNine. “Coding Web Crawler in Python with Scrapy.” YouTube, November 23, 2022.<br>  https://www.youtube.com/watch?v=m_3gjHGxIJc&t=774s. <br>
+S3CloudHub. “How to Create a Simple Flask App in Just 5 Minutes: Python Flask Tutorial for Beginners.” YouTube,<br>  August 18, 2022. https://youtu.be/6M3LzGmIAso?si=r_t_10c7o_bWv-j1. <br>
 
 
 
